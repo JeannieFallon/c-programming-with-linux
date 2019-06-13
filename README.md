@@ -3,8 +3,10 @@
 Code samples written as coursework for the following:
 
 [Professional Certificate: C Programming with Linux](https://www.edx.org/professional-certificate/dartmouth-imtx-c-programming-with-linux)
+
 Dartmouth College (DartmouthX) & Institut Mines-Télécom (IMTx)
-https://www.edx.org/
+
+[edX.org](https://www.edx.org/)
 
 Program summary:
 * Develop and debug code in the C programming language
