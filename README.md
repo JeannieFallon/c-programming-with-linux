@@ -6,7 +6,7 @@ Code samples written as coursework for the following:
 
 Dartmouth College (DartmouthX) & Institut Mines-Télécom (IMTx)
 
-[edX.org](https://www.edx.org/)
+
 
 Program summary:
 * Develop and debug code in the C programming language
