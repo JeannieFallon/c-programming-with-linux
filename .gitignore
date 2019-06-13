@@ -1,3 +1,16 @@
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+# Above combination will ignore all files without extension.
+# Alternatively, place compiled binaries w/o extensions into
+# separate /bin directory and ignore that.
+
 # Prerequisites
 *.d
 
