@@ -27,11 +27,11 @@
 #include <stdio.h>
 
 int main(void) {
-    int height, numLeaf;
+  int height, numLeaf;
     
-    scanf("%d%d", &height, &numLeaf);
+  scanf("%d%d", &height, &numLeaf);
     
-    if (numLeaf <= 7) {
+  if (numLeaf <= 7) {
     if (height >= 12) {
       printf("Dorthonion\n");
     } else if (height <= 8 && numLeaf <=5) {
@@ -49,5 +49,5 @@ int main(void) {
     }
   }
 
-    return 0;
+  return 0;
 }
