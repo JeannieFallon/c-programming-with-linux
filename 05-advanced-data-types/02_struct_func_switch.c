@@ -11,7 +11,6 @@
 // functions. Do not modify any of the given code. Simply add your function definitions 
 // underneath the main() function. For the readDate() and printDate() functions you 
 // may simply copy and paste the code you developed in the previous task.
-
 #include <stdio.h>
 
 struct date {
@@ -50,7 +49,7 @@ struct date advanceDay(struct date dateObj) {
   if (dateObj.day >= 28) {
     switch (dateObj.month) {
       case 2:
-        dateObj.day = (dateObj.day+1)%28;
+        dateObj.day = (dateObj.day%28)+1;
         break;
       case 1:
       case 3:
@@ -59,16 +58,17 @@ struct date advanceDay(struct date dateObj) {
       case 8:
       case 10:
       case 12:
-        dateObj.day = (dateObj.day+1)%31;
+        dateObj.day = (dateObj.day%31)+1;
         break;
       default:
-        dateObj.day = (dateObj.day+1)%30;
+        dateObj.day = (dateObj.day%30)+1;
     }
     
-    dateObj.month += 1;
-    if(dateObj.month > 12) {
-      dateObj.month = 1;
-      dateObj.year++; 
+    if (dateObj.day == 1) {
+      dateObj.month = (dateObj.month%12)+1;
+      if(dateObj.month == 1) {
+        dateObj.year++; 
+      }
     }
     
   } else {
