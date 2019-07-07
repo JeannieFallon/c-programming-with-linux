@@ -21,3 +21,6 @@ Curriculum:
 5.  C Programming: Advanced Data Types (Dartmouth_IMTx - DART.IMT.C.05)
 6.  Linux Basics: The Command Line Interface (Dartmouth_IMTx - DART.IMT.C.06)
 7.  C Programming: Using Linux Tools and Libraries (Dartmouth_IMTx - DART.IMT.C.07)
+
+## Disclaimer
+This repository is intended to showcase work completed in pursuit of a professional certificate as part of a professional portfolio. This code is not intended for redistribution, and the original author of this repository is not responsible for any academic penalties or other damages incurred from plagiarized code.
