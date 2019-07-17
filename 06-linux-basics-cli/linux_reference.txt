@@ -1,0 +1,238 @@
+/*****************************Dartmouth/IMT course notes: commands
+
+// general format
+<command> <options> <files or data>
+		- <command> is usually the name of an application (built into linux itself)
+
+// display username associated with current user ID
+whoami
+
+// show user id, group id, and what group belong to
+id
+
+// display name of current user (how is this different from whoami?)
+logname
+
+// display name of particular variable/element
+echo $<variable/element>
+
+// get or set name of machine (hostname or DNS domain name)
+hostname 
+
+// print system information
+uname 
+	-a 		print all
+	-m 		machine (hardware type)
+	-r 		OS release
+	-p 		processor type
+
+// display minutes since being booted up & load average
+uptime
+
+// display calendar
+cal
+	-j 		julian dates (days since beginning of year)
+	-y 		entire year
+
+// display date (format options available)
+date
+date + "%T"
+date + "%A %d %B %Y"
+
+// display view of process activity in realtime
+top
+	-b 		batch mode
+	
+// more graphical top (must install)
+htop
+
+// disk usage
+du
+	-a		file sizes
+	-c 		grand total
+	-h 		sizes, human readable
+	-m 		sizes, megabytes
+	-k 		sizes, kilobytes
+	
+// basic file editor
+nano
+			` 
+// VI improved (:q to exit, or :q! if changes present)
+vim
+
+// bonus weblinux commands
+hello
+worm
+firework
+rain
+hanoi
+knight
+
+// basic navigation
+pwd, ls, cd
+
+// ls options
+	-a 		all (show hidden dotfiles)
+	-h 		human readable sizes
+	-l 		long list format
+	-r 		reverse order 
+	-s 		size of file, in blocks
+	-t 		sort by modification time
+	
+// get type of file
+file <filename>
+
+// show file absolute path
+realpath <filename>
+
+// get path of binaries installed on system
+which <command binary>
+
+// create/access filename with spaces
+touch my\ file
+touch 'my file'
+
+// copy output of file to a new file
+cat file1.txt > file2.txt
+
+// use cat to create a file & immediately edit (ctrl+d to exit)
+cat > new_file.txt
+
+// page long output using pipe (less is better)
+// space to page, j & k for up & down by line
+cat etc/services/ | more 
+cat etc/services/ | less
+less file.txt
+ls -l /usr/bin | less
+
+// search in less output, n to cycle through matches
+/<search term>
+
+// less flags
+	-m 		status line w/ line numbers
+	-N		prefix line numbers
+	-I 		ignore case in searches
+	
+// create directory
+mkdir new-dir
+
+// remove directory (use -i confirm each action & -f to never prompt)
+rm -r new-dir 
+rm -ri new-dir
+rm -rf new-dir
+
+// use "yes" to auto accept all prompts
+yes | rm -ri new-dir
+
+// create multiple dir of same level in single line
+mkdir d1 d2 d3
+
+// create multiple nested directories
+mkdir -p d1/d2/d3 
+
+// use htop to kill process
+- select program
+- hit F9
+- choose signal to send: 9 SIGKILL
+
+// rename element1 to element2 (careful: can overwrite)
+mv element1 element2
+	-i		prompt before overwriting
+	-n 		don't overwrite existing file
+
+// move file to current location and rename at same time
+mv other-dir/filename1 filename2
+
+// copy element1 to element2 (careful: can overwrite)
+cp element1 element2
+	-i 		prompt before overwrite
+	-f 		force overwrite
+	
+// find content
+locate <filename>
+
+// update content in locate pool
+updatedb
+
+// simple search for all files starting with a
+echo a* 
+echo /usr/bin/a*
+
+// simple search for all files starting with a, but only 3 letters in name
+echo /usr/bin/a??
+
+// simple search for all files only 3 letters in name 
+echo /usr/bin/???
+
+// list all files down through subdirectories (singular, not in tree)
+find 
+
+// find files in curr dir (and subdir) with specified name (or portion of name)
+find . -name "program.c"
+find . -name "prog*"
+
+// find files in entire system, send error output to special blackhole null file
+find / -name "hello" 2> /dev/null
+
+// find files with wildcards
+find / -name "*joe*" 2> /dev/null 
+	-iname 		ignore case
+
+// find directories 
+find / -path "*joe*" 2> /dev/null 
+
+// page output using pipe
+find / -path "*joe*" 2> /dev/null | less 
+
+// display amount of free & used system memory
+free
+	-g 		gigabyte
+	-m 		megabyte
+	-k 		kilobyte 
+	-b 		bytes
+
+// also see memory usage by using 'm' to sort output of top
+
+// check memory usage of C program: run htop while waiting for input to see virt mem 
+
+// buffer: quantity of memory that ends at newline \n 
+
+// force print buffer, even without \n
+in C:
+	printf("What is your name?");
+	fflush(stdout);
+	scanf("%s", name);
+	
+// file redirection to simulate an input: make file as input
+./program < filename
+
+/*****************************Dartmouth/IMT course notes: filesystem 
+
+- standard tree directory structure
+- FSSTND: Filesystem Standard, released 1994 and based on standards for Unix systems
+	> most linux distros don't strictly follow, but some things are generally included
+	> see also: FHS, Filesystem Hierarchy Standard
+- standard directories
+	/bin/		contains all basic commands to start & use minimal system (from "binary")
+	/sbin/		contains commands & executables for super user (s + binary)
+	/home/		contains all user directories
+	/root/		home directory of super user
+	/etc/		contains configuration files (from "editable text configuration")
+	/lib/		contains software libraries required for executables stored in /bin and /sbin 
+	/tmp/		for temporary files, usually emptied everytime machine is restarted
+	/var/		contains various files used by OS, like databases, email boxes, history (logs)
+	/usr/		contains subfolders used to extend operations (from "unix system resources")
+					> ex) contains a sub-dir /bin and /lib for ops beyond basic functionality
+	/dev/		contains files that correspond directly or indirectly to physical device ("device")
+- relative v. absolute path
+	.			current directory
+	..			parent directory 
+	relative	navigate using . or .. 
+					> ex) cd ../../home/user 
+	absolute	always start with root
+					> ex) cd /sys/
+- colors
+	dark blue	directory
+	white		file
+	light blue	symlink
+	
