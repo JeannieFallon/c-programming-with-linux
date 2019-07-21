@@ -1,0 +1,5 @@
+superimage: superimage.c libimage.so
+	gcc -std=c11 -Wall -Wextra superimage.c libimage.so -o superimage
+libimage.so: libimage.c libimage.h 
+	gcc -std=c11 -Wall -Wextra -c libimage.c -o libimage.so 
+
